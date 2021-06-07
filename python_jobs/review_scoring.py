@@ -26,7 +26,6 @@ import os
 import pandas as pd
 import numpy as np
 
-nltk.download('vader_lexicon')
 def get_score(comment):
     try:
         text = TextBlob(comment)

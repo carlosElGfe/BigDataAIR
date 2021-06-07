@@ -19,7 +19,6 @@ from pyspark.sql.functions import log10
 from pyspark.ml.feature import StringIndexer
 from textblob import TextBlob
 from pyspark.sql.types import StringType
-from googletrans import Translator
 import re
 from datetime import datetime
 spark = SparkSession.builder.getOrCreate()

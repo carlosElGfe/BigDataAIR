@@ -5,7 +5,6 @@ from utils import *
 from flask import Flask, render_template
 from python_jobs.newjob import *
 from python_jobs.listings_pre import *
-import pyathenajdbc
 import boto3
 app = Flask(__name__)
 

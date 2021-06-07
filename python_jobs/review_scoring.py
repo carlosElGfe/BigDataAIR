@@ -19,16 +19,13 @@ from pyspark.ml.feature import StringIndexer
 from pyspark.sql.types import IntegerType
 from pyspark.sql.functions import length
 from textblob import TextBlob
-from googletrans import Translator
 import re
 from datetime import datetime
 import awswrangler as wr
 import os
-import nltk
 import pandas as pd
 import numpy as np
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from nltk.corpus import twitter_samples 
+
 nltk.download('vader_lexicon')
 def get_score(comment):
     try:

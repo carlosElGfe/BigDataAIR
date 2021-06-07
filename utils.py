@@ -1,7 +1,6 @@
 import csv
 import pandas as pd
 import json
-import pyathenajdbc
 
 def get_reviews():
     data = []

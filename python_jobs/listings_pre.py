@@ -17,7 +17,6 @@ from textblob import TextBlob
 from googletrans import Translator
 import re
 from datetime import datetime
-import awswrangler as wr
 import os
 
 def get_listings():

@@ -15,7 +15,6 @@ from pyspark.sql.types import StringType
 from pyspark.ml.feature import StringIndexer
 from pyspark.sql.functions import length
 from textblob import TextBlob
-from googletrans import Translator
 import re
 from datetime import datetime
 import awswrangler as wr

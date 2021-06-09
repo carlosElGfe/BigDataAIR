@@ -66,7 +66,7 @@ def clean_sentence(sentence):
 path = 'reviews.csv'
 
 df = spark.read.csv(path,sep=',',header = True, inferSchema=True)
-df = df.limit(1000000)
+df = df.limit(500000)
 udf_clean = udf(lambda x: clean(x), StringType())
 udf_score = udf(lambda x: get_score(x), StringType())
 
@@ -87,5 +87,5 @@ pandas_df = df.select("*").toPandas()
 pandas_df['score'] = pandas_df['clean_comment'].apply(lambda x: get_score(x))
 print(pandas_df.head(10))
 pandas_df = pandas_df.drop(['comments','date','id'],axis=1)
-pandas_df.to_csv('review/reviews.csv',index=False)
 pandas_df.to_parquet('reviews.parquet',index=False)
+#pandas_df.to_csv('review/reviews.csv',index=False)

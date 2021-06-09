@@ -93,7 +93,7 @@ def beds():
     for i in c:
         temp = get_score_beds(i.lower(),athena)
         data.append(temp)  
-    return render_template('barrios.html',  max=17000,countries = countries,data = data)
+    return render_template('beds.html',  max=17000,countries = countries,data = data)
 
 
 

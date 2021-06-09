@@ -21,7 +21,7 @@
       </div>
       <div class="card-body">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-        <canvas id="chart{{data.index(i)}}" width="300" height="200"></canvas>    <script>
+        <canvas id="chart{{data.index(i)}}" width="200" height="100"></canvas>    <script>
         var values = [{%for j in i[0]%}"{{j}}",{%endfor%}];
         var labels = [{%for j in i[1]%}"{{j}}",{%endfor%}];
         var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA","#A569BD", "#34495E ", "#CD6155 ", "#84C2C6","#2ECC71","#F70CE1"];

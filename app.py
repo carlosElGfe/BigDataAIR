@@ -6,6 +6,7 @@ from flask import Flask, render_template, request
 from python_jobs.listings_pre import *
 import boto3
 from werkzeug.datastructures import ImmutableMultiDict
+import sys
 
 countries = [
     'Sydney',
@@ -14,7 +15,8 @@ countries = [
     'Amsterdam'
 ]
 app = Flask(__name__)
-
+key = sys.argv[1]
+secret = sys.argv[2]
 @app.route("/")
 def index():
     data = get_reviews()
@@ -37,8 +39,8 @@ def bar():
 
 @app.route("/hosts")
 def test():
-    aws_access_key_id="AKIA4UBERADC3AQYKUCB"
-    aws_secret_access_key="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"
+    aws_access_key_id=key
+    aws_secret_access_key=secret
     athena = boto3.client('athena', region_name="us-east-1", aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
     data = []
     for i in countries:
@@ -59,8 +61,8 @@ def query():
     dictt = request.form.to_dict(flat=False)
     for i in dictt:
         try:
-            aws_access_key_id="AKIA4UBERADC3AQYKUCB"
-            aws_secret_access_key="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"
+            aws_access_key_id=key
+            aws_secret_access_key=secret
             athena = boto3.client('athena', region_name="us-east-1", aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
             temp = exequte_query(dictt[i][0],athena)
         except Exception:
@@ -71,8 +73,8 @@ def query():
 def barrios():
     c = countries
     c = c[:3]
-    aws_access_key_id="AKIA4UBERADC3AQYKUCB"
-    aws_secret_access_key="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"
+    aws_access_key_id=key
+    aws_secret_access_key=secret
     athena = boto3.client('athena', region_name="us-east-1", aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
     data = []
     for i in c:
@@ -84,8 +86,8 @@ def barrios():
 def beds():
     c = countries
     c = c[:3]
-    aws_access_key_id="AKIA4UBERADC3AQYKUCB"
-    aws_secret_access_key="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"
+    aws_access_key_id=key
+    aws_secret_access_key=secret
     athena = boto3.client('athena', region_name="us-east-1", aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
     data = []
     for i in c:

@@ -1,5 +1,12 @@
 **Welcome to the Big Data Web App**
 ```
+requirements
+spark
+python3
+pip 
+venv
+```
+```
 Instructions:
 
          0. git clone https://github.com/carlosElGfe/BigDataAIR.git

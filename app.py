@@ -22,8 +22,6 @@ def index():
     data = get_reviews()
     return render_template("home.html", message="Hello Flask!",data2 = data)
 
-
-
 @app.route("/listings")
 def listingss():
     get_listings()
@@ -34,7 +32,7 @@ def bar():
     bar_labels=labels
     bar_values=values
     print(labels)
-    return render_template('bar_chart.html', title='Bitcoin Monthly Price in USD', max=17000, labels=bar_labels, values=bar_values)
+    return render_template('bar_chart.html', title='BAR', max=17000, labels=bar_labels, values=bar_values)
 
 
 @app.route("/hosts")

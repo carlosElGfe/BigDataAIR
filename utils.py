@@ -57,7 +57,7 @@ def get_worst_and_bests_hosts(country,athena):
                     }
             )
     query_execution_id = response['QueryExecutionId']
-    time.sleep(6)
+    time.sleep(2)
     responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
     output = []##the lists ready for bests/worsts
     cont = 0
@@ -126,7 +126,7 @@ order by score desc""",
                     }
             )
     query_execution_id = response['QueryExecutionId']
-    time.sleep(7)
+    time.sleep(4)
     responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
     output = []##the lists ready for bests/worsts
     cont = 0
@@ -162,7 +162,7 @@ order by score desc""",
                     }
             )
     query_execution_id = response['QueryExecutionId']
-    time.sleep(7)
+    time.sleep(4)
     responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
     output = []##the lists ready for bests/worsts
     cont = 0
@@ -196,7 +196,7 @@ def exequte_query(query,athena):
                     }
             )
     query_execution_id = response['QueryExecutionId']
-    time.sleep(7)
+    time.sleep(6)
     responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
     output = []##the lists ready for bests/worsts
     for i in responsee['ResultSet']['Rows']:

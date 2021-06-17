@@ -3,7 +3,6 @@ import time
 import csv
 from utils import *
 from flask import Flask, render_template, request
-from python_jobs.listings_pre import *
 import boto3
 from werkzeug.datastructures import ImmutableMultiDict
 import sys
@@ -15,8 +14,8 @@ countries = [
     'Amsterdam'
 ]
 app = Flask(__name__)
-key = sys.argv[1]
-secret = sys.argv[2]
+key = 'AKIA4UBERADCR3N6X6PE'
+secret = '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'
 @app.route("/")
 def index():
     data = get_reviews()

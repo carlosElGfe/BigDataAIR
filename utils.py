@@ -5,7 +5,6 @@ import os
 import time
 from utils import *
 from flask import Flask, render_template
-from python_jobs.listings_pre import *
 import boto3
 def get_reviews():
     data = []

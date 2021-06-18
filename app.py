@@ -14,8 +14,8 @@ countries = [
     'Amsterdam'
 ]
 app = Flask(__name__)
-key = 'AKIA4UBERADCR3N6X6PE'
-secret = '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'
+key = os.environ['ACCESS_KEY']
+secret = os.environ['SECRET_ACCESS_KEY']
 @app.route("/")
 def index():
     data = get_reviews()
@@ -32,7 +32,6 @@ def bar():
     bar_values=values
     print(labels)
     return render_template('bar_chart.html', title='BAR', max=17000, labels=bar_labels, values=bar_values)
-
 
 @app.route("/hosts")
 def test():

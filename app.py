@@ -136,7 +136,7 @@ def view_count():
     aws_secret_access_key=secret
     athena = boto3.client('athena', region_name="us-east-1", aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
     data = []
-    temp,temp2,temp3 = get_view(athena)
+    temp,temp2,temp3 = get_count_bedroomtype(athena)
     first = []
     temp_value = list(map(lambda x: float(x[1]),temp))
     temp_label = list(map(lambda x: (x[0]),temp))    

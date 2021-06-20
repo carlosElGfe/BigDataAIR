@@ -13,35 +13,53 @@
         <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
           <a class="navbar-brand" href="https://big-data-uandes.herokuapp.com">Home</a>
         </nav>
-        {% for i in data%}
     <div style='margin-top:20px'>
     <div class="card">
       <div class="card-header">
-    Average price of room type {{countries[data.index(i)]}} 
+    Average room type price
       </div>
       <div class="card-body">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-        <canvas id="chart{{data.index(i)}}" width="200" height="100"></canvas>    <script>
-        var values = [{%for j in i[0]%}"{{j}}",{%endfor%}];
-        var labels = [{%for j in i[1]%}"{{j}}",{%endfor%}];
+        <canvas id="chart" width="100" height="50"></canvas>    <script>
+        var values = [{%for j in data[0][0]%}"{{j}}",{%endfor%}];
+        var values2 = [{%for j in data[1][0]%}"{{j}}",{%endfor%}]; 
+        var values3 = [{%for j in data[2][0]%}"{{j}}",{%endfor%}];
+        var labels = [{%for j in data[0][1]%}"{{j}}",{%endfor%}];
         var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA","#A569BD", "#34495E ", "#CD6155 ", "#84C2C6","#2ECC71","#F70CE1"];
 
 
-var chart = new Chart(document.getElementById("chart{{data.index(i)}}"), {
+var chart = new Chart(document.getElementById("chart"), {
     type: 'bar',
     data: {
       labels: labels,
       datasets: [{
-        label: ['data'],
-        backgroundColor: colors,
+        label: ['Entire Apartment'],
+        backgroundColor: "#F7464A",
         data: values
+      },
+      {
+        label: ['Private Suit'],
+        backgroundColor: "#46BFBD",
+        data: values2
+      },
+      {
+        label: ['Shared Room'],
+        backgroundColor: "#FEDCBA",
+        data: values3
       }]
     },
     options: {
       title: {
         display: true,
-        text: 'Overall score per neighborhood'
+        text: 'AVG price per room type'
       },
+      scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }},
       legend: {
         labels: {
           /* here one can adjust the legend's labels, if required */
@@ -52,6 +70,5 @@ var chart = new Chart(document.getElementById("chart{{data.index(i)}}"), {
 });
     </script>
     </div></div></div>
-    {%endfor%}
   </body>
 </html>

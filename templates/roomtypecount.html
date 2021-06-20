@@ -6,42 +6,61 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"> </script>
     
-    <title>Beds</title>
+    <title>Count per country of room types</title>
   </head>
   <body>
    
         <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
           <a class="navbar-brand" href="https://big-data-uandes.herokuapp.com">Home</a>
         </nav>
-        {% for i in data%}
+        {% for i in range(0,1)%}
     <div style='margin-top:20px'>
     <div class="card">
       <div class="card-header">
-    Overall score group by beds of {{countries[data.index(i)]}} 
+    Count per room rype per country
       </div>
       <div class="card-body">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-        <canvas id="chart{{data.index(i)}}" width="200" height="100"></canvas>    <script>
-        var values = [{%for j in i[0]%}"{{j}}",{%endfor%}];
-        var labels = [{%for j in i[1]%}"{{j}}",{%endfor%}];
+        <canvas id="chart1" width="200" height="100"></canvas>    <script>
+        var values = [{%for j in data[0][0]%}"{{j}}",{%endfor%}];
+        var values2 = [{%for j in data[1][0]%}"{{j}}",{%endfor%}];
+        var values3 = [{%for j in data[2][0]%}"{{j}}",{%endfor%}];
+        var labels = [{%for j in data[1][1]%}"{{j}}",{%endfor%}];
         var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA","#A569BD", "#34495E ", "#CD6155 ", "#84C2C6","#2ECC71","#F70CE1"];
 
 
-var chart = new Chart(document.getElementById("chart{{data.index(i)}}"), {
-    type: 'pie',
+var chart = new Chart(document.getElementById("chart1"), {
+    type: 'bar',
     data: {
       labels: labels,
       datasets: [{
-        label: "Series 01",
-        backgroundColor: colors,
+        label: ['Shared'],
+        backgroundColor: "#F7464A",
         data: values
-      }]
+      },{
+        label: ['Private'],
+        backgroundColor: "#46BFBD",
+        data: values2
+      },
+      {
+        label: ['Entire'],
+        backgroundColor: "#A569BD",
+        data: values3
+      }
+      ]
     },
     options: {
       title: {
         display: true,
-        text: 'Overall score per bed number'
+        text: 'Count of room type'
       },
+      scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }},
       legend: {
         labels: {
           /* here one can adjust the legend's labels, if required */

@@ -107,7 +107,146 @@ def get_worst_and_bests_hosts(country,athena):
     
     
     return bar_labels_worst,bar_values_worst ,bar_labels_best,bar_values_best
+def get_country_data(country,athena):
+    response = athena.start_query_execution(
+                QueryString="""SELECT * FROM "grupo5_db"."""+'"'+country+"""_mean_bed_price"""+'"',
+                    QueryExecutionContext={
+                    'Database': 'grupo5_db'
+                    },
+                    ResultConfiguration={
+                    'OutputLocation': 's3://aypmd-grupo5/query_results',
+                    }
+            )
+    query_execution_id = response['QueryExecutionId']
+    time.sleep(2)
+    responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
+    prices_private = []
+    cont = 0
+    for i in responsee['ResultSet']['Rows']:
+        if cont != 0:
+            data = i['Data']
+            temp_prices_private = []
+            pais = data[0]['VarCharValue']
+            temp_prices_private.append(pais)
+            temp_prices_private.append(data[1]['VarCharValue'])
+            prices_private.append(temp_prices_private)
+        else:
+            cont+=1
+    return prices_private
 
+def get_view(athena):
+    response = athena.start_query_execution(
+                QueryString='SELECT * FROM "grupo5_db"."listings_room_type_avg_price"',
+                    QueryExecutionContext={
+                    'Database': 'grupo5_db'
+                    },
+                    ResultConfiguration={
+                    'OutputLocation': 's3://aypmd-grupo5/query_results',
+                    }
+            )
+    query_execution_id = response['QueryExecutionId']
+    time.sleep(2.5)
+    responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
+    prices_entire = []
+    prices_shared = []
+    prices_private = []
+    cont = 0
+    contador = 1
+    for i in responsee['ResultSet']['Rows']:
+        if cont != 0:
+            data = i['Data']
+            if contador % 3 == 0:
+                contador = 0
+            temp_prices_entire = []
+            temp_prices_shared = []
+            temp_prices_private = []
+            pais = data[0]['VarCharValue']
+            if 'Entire' in data[1]['VarCharValue']:
+                temp_prices_entire.append(pais)
+                temp_prices_entire.append(data[2]['VarCharValue'])
+                prices_entire.append(temp_prices_entire)
+            elif 'Shared' in data[1]['VarCharValue']:
+                temp_prices_shared.append(pais)
+                temp_prices_shared.append(data[2]['VarCharValue'])
+                prices_shared.append(temp_prices_shared)
+            elif 'Priva' in data[1]['VarCharValue']:
+                temp_prices_private.append(pais)
+                temp_prices_private.append(data[2]['VarCharValue'])
+                prices_private.append(temp_prices_private)
+        else:
+            cont+=1
+    return prices_entire,prices_private,prices_shared
+
+def get_review_count(athena):
+    response = athena.start_query_execution(
+                QueryString='SELECT * FROM "grupo5_db"."listings_main_info"',
+                    QueryExecutionContext={
+                    'Database': 'grupo5_db'
+                    },
+                    ResultConfiguration={
+                    'OutputLocation': 's3://aypmd-grupo5/query_results',
+                    }
+            )
+    query_execution_id = response['QueryExecutionId']
+    time.sleep(2.5)
+    responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
+    prices_private = []
+    cont = 0
+    for i in responsee['ResultSet']['Rows']:
+        if cont != 0:
+            data = i['Data']
+            temp_prices_private = []
+            pais = data[0]['VarCharValue']
+            temp_prices_private.append(pais)
+            temp_prices_private.append(data[2]['VarCharValue'])
+            prices_private.append(temp_prices_private)
+        else:
+            cont+=1
+    return prices_private
+
+
+def get_count_bedroomtype(athena):
+    response = athena.start_query_execution(
+                QueryString='SELECT * FROM "grupo5_db"."listings_room_type_avg_price"',
+                    QueryExecutionContext={
+                    'Database': 'grupo5_db'
+                    },
+                    ResultConfiguration={
+                    'OutputLocation': 's3://aypmd-grupo5/query_results',
+                    }
+            )
+    query_execution_id = response['QueryExecutionId']
+    time.sleep(2.5)
+    responsee = athena.get_query_results(QueryExecutionId = query_execution_id)
+    prices_entire = []
+    prices_shared = []
+    prices_private = []
+    cont = 0
+    contador = 1
+    for i in responsee['ResultSet']['Rows']:
+        if cont != 0:
+            data = i['Data']
+            if contador % 3 == 0:
+                contador = 0
+            temp_prices_entire = []
+            temp_prices_shared = []
+            temp_prices_private = []
+            pais = data[0]['VarCharValue']
+            if 'Entire' in data[1]['VarCharValue']:
+                temp_prices_entire.append(pais)
+                temp_prices_entire.append(data[3]['VarCharValue'])
+                prices_entire.append(temp_prices_entire)
+            elif 'Shared' in data[1]['VarCharValue']:
+                temp_prices_shared.append(pais)
+                temp_prices_shared.append(data[3]['VarCharValue'])
+                prices_shared.append(temp_prices_shared)
+            elif 'Priva' in data[1]['VarCharValue']:
+                temp_prices_private.append(pais)
+                temp_prices_private.append(data[3]['VarCharValue'])
+                prices_private.append(temp_prices_private)
+        else:
+            cont+=1
+    return prices_entire,prices_private,prices_shared
 
 def get_score_neighborhood(country,athena):
     response = athena.start_query_execution(

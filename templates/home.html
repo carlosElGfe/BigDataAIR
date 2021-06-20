@@ -6,8 +6,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-
-    
     <title>Flask Template Example</title>
   </head>
   <body>
@@ -19,7 +17,7 @@
           </div>
         </div>
         <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-          <a class="navbar-brand" href="http://localhost:8000">Home</a>
+          <a class="navbar-brand" href="https://big-data-uandes.herokuapp.com">Home</a>
         </nav>
       </div>
         <div style="margin-left:100px;margin-right:100px">
@@ -27,13 +25,13 @@
           
           <p> Chose a Feature of the system</p>
           <ul class="list-group" style='margin-bottom:30px;'>      
-            <li class="list-group-item list-group-item-primary"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/hosts">Best hosts</a></li>
-            <li class="list-group-item list-group-item-secondary"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/neighborhoods">Best neighborhoods</a></li>
-            <li class="list-group-item list-group-item-success"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/beds">Perfect bed number</a></li>
-            <li class="list-group-item list-group-item-danger">Best reviews</li>
-            <li class="list-group-item list-group-item-warning">Warnings and disclaimers</li>
+            <li class="list-group-item list-group-item-primary">Best hosts</li>
+            <li class="list-group-item list-group-item-secondary">Best neighborhoods</li>
+            <li class="list-group-item list-group-item-success"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/form">Compare countries</a></li>
+            <li class="list-group-item list-group-item-danger"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/review_count">Count of reviews</a></li>
+            <li class="list-group-item list-group-item-warning"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/view_count">Find how many room of diferent types are in each country</a></li>
             <li class="list-group-item list-group-item-info"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/ai_info">How does the AI model works ?</a></li>
-            <li class="list-group-item list-group-item-light">Data Preparation</li>
+            <li class="list-group-item list-group-item-light"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/view">Price per room type for reach country</a></li>
             <li class="list-group-item list-group-item-dark"><a class="navbar-brand" href="https://big-data-uandes.herokuapp.com/db">DataBase UI!</a></li>
           </ul>
           <div class="col-md-10 ">
@@ -48,15 +46,15 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                4
+                                7
                             </h2>
                         </div>
                         <div class="col-4 text-right">
-                            <span>40% <i class="fa fa-arrow-up"></i></span>
+                            <span>70% <i class="fa fa-arrow-up"></i></span>
                         </div>
                     </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
                     </div>
                 </div>
             </div>

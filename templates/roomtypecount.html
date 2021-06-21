@@ -30,13 +30,13 @@
 
 
 var chart = new Chart(document.getElementById("chart1"), {
-    type: 'radar',
+    type: 'bar',
     data: {
       labels: labels,
       datasets: [{
         label: ['Shared'],
         //backgroundColor: "#F7464A",
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235)',
     borderColor: 'rgb(54, 162, 235)',
     pointBackgroundColor: 'rgb(54, 162, 235)',
     pointBorderColor: '#fff',
@@ -45,7 +45,7 @@ var chart = new Chart(document.getElementById("chart1"), {
         data: values
       },{
         label: ['Private'],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
     pointBackgroundColor: 'rgb(255, 99, 132)',
     pointBorderColor: '#fff',
@@ -57,7 +57,7 @@ var chart = new Chart(document.getElementById("chart1"), {
         label: ['Entire'],
         //backgroundColor: "#A569BD",
         borderColor: 'rgba(147,112,219)',
-        backgroundColor:"rgba(147,112,219,0.2)",
+        backgroundColor:"rgba(147,112,219)",
         pointBorderColor: 'rgba(147,112,219)',
         pointHoverBackgroundColor: 'rgba(147,112,219)',
         pointHoverBorderColor: 'rgba(147,112,219)',

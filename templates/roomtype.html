@@ -29,22 +29,36 @@
 
 
 var chart = new Chart(document.getElementById("chart"), {
-    type: 'bar',
+    type: 'radar',
     data: {
       labels: labels,
       datasets: [{
         label: ['Entire Apartment'],
-        backgroundColor: "#F7464A",
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(54, 162, 235)',
+        pointBackgroundColor: 'rgb(54, 162, 235)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(54, 162, 235)',
         data: values
       },
       {
         label: ['Private Suit'],
-        backgroundColor: "#46BFBD",
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)',
         data: values2
       },
       {
         label: ['Shared Room'],
-        backgroundColor: "#FEDCBA",
+        borderColor: 'rgba(147,112,219)',
+        backgroundColor:"rgba(147,112,219,0.2)",
+        pointBorderColor: 'rgba(147,112,219)',
+        pointHoverBackgroundColor: 'rgba(147,112,219)',
+        pointHoverBorderColor: 'rgba(147,112,219)',
         data: values3
       }]
     },
